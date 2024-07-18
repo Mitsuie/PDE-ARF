@@ -9,85 +9,34 @@
 - Windowsの動作確認しかしていません。当然使い方もWindowsのもののみ説明します。
 - 今のところ問題は起きないはずだが、何かあったときは自己責任ということで……
 - また、会計要望書生成は令和6年度の要望書のレイアウトを基準に作成している。今後要望書のテンプレートが変更された場合は、使用できなくなることがあるので注意。
-- バグの修正などを行うために、新たにインストーラを公開する場合がある。
-以下のリンクから、バージョン情報を確認すること。
-    
-    [■バージョンについて](https://www.notion.so/2e083b1b7ca0461cad3d9642b84bd47d?pvs=21) 
-    
 
 ### ■インストール方法
 
 1. 以下のインストーラの入ったzipフォルダをダウンロード。
     
-    [setup_PDE-ARF-1.0.1.zip](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/ffba7b57-1d3e-45f6-acab-3362f123e04e/setup_PDE-ARF-1.0.1.zip)
-    
 2. zipフォルダを解凍してインストーラを起動させる。
-    
-    ![zipフォルダの展開](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/141ff94a-6901-446d-894a-a2bb48417e7e/Untitled.png)
-    
-    zipフォルダの展開
     
 3. 表示されるフォルダの中にある「setup_PDE-ARF.exe」を起動する。
     
-    ![setup_PDE-ARF.exeのアイコン](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/5668a087-4f18-4843-b14b-3a2379cb7c64/Untitled.png)
-    
-    setup_PDE-ARF.exeのアイコン
-    
 4. このような画面が出るので、「詳細情報」をクリックします。
     
-    ![「WindowsによってPCが保護されました」](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/5d5cb169-ac18-4515-a23e-3f76fe3689d7/Untitled.png)
-    
-    「WindowsによってPCが保護されました」
-    
 5. そのあとに、表示される「実行ボタン」をクリックします。
-    
-    ![「詳細情報」をクリックしたときの「WindowsによってPCが保護されました」](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/c6b6bdb0-20f5-474b-945d-9f0d48478f45/Untitled.png)
-    
-    「詳細情報」をクリックしたときの「WindowsによってPCが保護されました」
-    
-    ※ このようなウィンドウが出てくるアプリはすべてが危険なわけではないが、当然危険なものもあるので、安易にこの操作をしないように。
-    
-    - ちなみにWindows 10ではこういうウィンドウは表示されない。
     
 6. インストール場所を確認して、「次へ」を押します。
     - デフォルトだと<C:\Users\[ログインしているアカウント名]\AppData\Local\Programs\東京電機大学新聞委員会>としてフォルダを作成し、格納される。
     - 基本的には変えなくてOK。
     
-    ![インストール先の選択](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/fbaa1a26-7c30-48a5-afd1-04606eb54540/Untitled.png)
-    
-    インストール先の選択
-    
 7. スタートメニューに表示されるフォルダー名の設定。
     - 特に希望がなければそのまま「次へ」。
-    
-    ![スタートメニューフォルダの設定](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/49b43f47-e63d-4910-9c96-e80127a92875/Untitled.png)
-    
-    スタートメニューフォルダの設定
-    
+   
 8. 「デスクトップ上にアイコンを作成する」にチェックを付けるのがおすすめ。設定が終われば、「次へ」を押す。
-    
-    ![追加タスクの選択](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/462151d7-cef8-4c2c-a6a5-795bec7396ab/Untitled.png)
-    
-    追加タスクの選択
     
 9. インストールの設定を確認をして、「インストール」をクリックする。
     
-    ![インストール準備完了](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/8a33a654-8829-4215-a8be-ae4f802c83f3/Untitled.png)
-    
-    インストール準備完了
-    
 10. アプリをすぐ起動したい場合は、「会計要望書生成を実行する」にチェックを入れる。設定を終えたら「完了」を押す。
-    
-    ![セットアップウィザードの完了](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/b4c1dc83-bc20-4e22-82db-7469f674315c/Untitled.png)
-    
-    セットアップウィザードの完了
     
 11. 完了！
     - 9.で「デスクトップ上にアイコンを作成する」にチェックを付けた場合、デスクトップ上にアイコン（ショートカット）を表示される。
-        
-        ![会計要望書生成のショートカット](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/f4bd27a5-e216-4670-85b6-038ac6aa19a9/Untitled.png)
-        
-        会計要望書生成のショートカット
         
 
 ### ■会計要望書生成の使用方法
@@ -101,26 +50,14 @@
     - 要望内容は文章で入力。
         - 例：取材に使用できるカメラの購入を要望いたします。
     
-    ![会計要望書生成の共通入力部分](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/950e56eb-7e03-4f4d-9daf-69a4394fcb2f/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-05_184322.png)
-    
-    会計要望書生成の共通入力部分
-    
 3. 提出する要望書の種類を選択します。
     - 起動時は「汎用」が表示されています。交通費を申請する場合は、下の白のボタンを押して選択します。
-    
-    ![ボタン一覧（白黒が要望書の様式変更、緑がWordファイルに出力、赤が途中終了。）](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/0fd73bdc-07cc-4057-a987-97dfd266f437/372ab8e3-2bab-473d-9c21-e2137c6ab134.png)
-    
-    ボタン一覧（白黒が要望書の様式変更、緑がWordファイルに出力、赤が途中終了。）
     
 4. 選択した様式に従って、情報を入力します。
     1. 「汎用」の場合
         - 要望の内容に合わせて「購入」か「選択」を選んでください。
         - 購入、もしくは使用するものの品名、合計金額、予定日、理由をそれぞれ入力します。
         - 入力が終わったら、「入力」を押して 4. へ。
-        
-        ![「汎用」の入力部分](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/7b71e48b-e4a3-4dc3-ab84-99268e733849/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-05_184405.png)
-        
-        「汎用」の入力部分
         
     2. 「交通費（電車・バス）」の場合
         - 往復分の見積もり金額、使用予定日、理由を入力します。
@@ -130,24 +67,12 @@
             - 最後の欄だけ大きく作ってあるので、長い経路があればそこに入力してください。
         - 入力が終わったら、「入力」を押して 4. へ。
         
-        ![「交通費（電車・バス）」の入力部分](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/78e47dbf-0d74-4945-8dfb-5bcc6d49790e/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-05_184429.png)
-        
-        「交通費（電車・バス）」の入力部分
-        
     3. 「交通費（レンタカー）」の場合
         - 使用する車種、合計見積もり金額、そのうちのガソリン代、高速道路代、使用予定日、往復の乗車経路、使用理由を入力してください。
         - 入力が終わったら、「入力」を押して 4. へ。
         
-        ![「交通費（レンタカー）」の入力部分](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/70d045f4-7405-4b61-96fe-8424822fa282/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-05_184452.png)
-        
-        「交通費（レンタカー）」の入力部分
-        
 5. 作成する要望書を保存する場所を指定して、ファイル名を設定し、「保存」を押します。
     - ファイル名は初期状態だと、「｛作成年（西暦）｝_｛作成日｝_会計要望書」となっています。
-    
-    ![出力したWordファイル保存](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/fa1e01ce-3ff2-4697-9e05-358ca7ffe508/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-05_185339.png)
-    
-    出力したWordファイル保存
     
 6. その直後に、作成したWordファイルが開かれるので、必要な要望書ができているか以下の点などに注意して確認します。
     - 必要な情報が十分に入力されているか。
@@ -157,10 +82,6 @@
     
 7. そのファイルを印刷し、団体印、代表者、会計の印鑑を押印します。
     
-    ![会計要望書の押印のイメージ](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/024d8fc0-1cef-48fc-be8d-140f92a56301/bf5413ba-3ce1-454c-9d62-c4233ed2c91c.png)
-    
-    会計要望書の押印のイメージ
-    
 8. 自治会執行委員会のルールに従って、要望書を提出します。
 9. 完了！
 
@@ -168,45 +89,17 @@
 
 1. Windowsロゴキーを押して、「会計要望書生成」と入力してアプリを検索します。
     
-    ![Windowsのスタートメニュー](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/78ddecda-d1ea-4025-8eb2-5372e6385927/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-08_112753.png)
-    
-    Windowsのスタートメニュー
-    
 2. 画像のように表示されるので、「アンインストール」をクリック。
-    
-    ![「会計要望書生成」の検索結果](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/c4996624-51bc-4e33-89f2-7a961e5e0eb8/Untitled.png)
-    
-    「会計要望書生成」の検索結果
     
 3. 「インストールされているアプリ」のウィンドウが開かれるので、会計要望書生成を探す。
     
-    ![インストールされているアプリ](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/a733f9bb-81b6-465f-b6cc-d4024b4b1f2b/Untitled.png)
-    
-    インストールされているアプリ
-    
 4. 会計要望書生成を見つけたら、三点リーダーをクリックして、「アンインストール」を選択。
-    
-    ![インストールされているアプリ（「会計要望書生成」の検索結果）](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/1a78f440-aecd-40bc-9a9c-521faf214921/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2024-07-08_113823.png)
-    
-    インストールされているアプリ（「会計要望書生成」の検索結果）
     
 5. 「アンインストール」をクリック。
     
-    ![アンインストールの確認](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/b250bcd9-4396-4ec3-a369-ba9600fa7ed9/Untitled.png)
-    
-    アンインストールの確認
-    
 6. ウィンドウが表示されるので、「はい」を選択。
     
-    ![アンインストーラによる確認](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/b1102d70-ae8c-4794-91fc-062270990f05/Untitled.png)
-    
-    アンインストーラによる確認
-    
 7. アンインストールの作業が終了すると、以下のウィンドウが表示されるので、「OK」を押す。
-    
-    ![アンインストールの完了通知](https://prod-files-secure.s3.us-west-2.amazonaws.com/d5a6abcf-7dfb-4251-be48-599202bc59d2/a080bc22-e9ee-4fb7-80e5-d5552d40ecbb/Untitled.png)
-    
-    アンインストールの完了通知
     
 8. 完了！
     - ショートカットファイルなど余計にデータが残っていることがあるので、再起動をしておくのがおすすめ。

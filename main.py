@@ -6,8 +6,14 @@ import docx
 from tkinter import filedialog
 import time
 import os
+import sys
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
+if hasattr(sys, '_MEIPASS'):
+    # PyInstallerで1ファイル化された場合に解凍される一時フォルダのパス
+    base_dir = sys._MEIPASS
+else:
+    # 通常のPythonスクリプトとして実行した場合のパス
+    base_dir = os.path.dirname(os.path.abspath(__file__))
 
 ctk.set_default_color_theme("blue")
 

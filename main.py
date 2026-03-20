@@ -7,7 +7,8 @@ from tkinter import filedialog
 import time
 import os
 
-ctk.set_appearance_mode("dork")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
 ctk.set_default_color_theme("blue")
 
 # 関連変数の定義
@@ -35,10 +36,10 @@ def button_enter():
         ward_use = "使用"
     else:
         tk.messagebox.showerror("エラー", "コンボボックス内をすべて揃えてください。")
-        return 0
+        return
 
     # 使用するPDMを指定
-    doc = docx.Document("PDM_ARF-001.docx")
+    doc = docx.Document(os.path.join(base_dir, "PDM_ARF-001.docx"))
 
     # 会計要望書の追記
     # 日付出力
@@ -49,35 +50,21 @@ def button_enter():
     doc.paragraphs[7].text = "代表　　" + en0_3_1.get() + "　" + en0_3_2.get()
     # 会計担当者名出力
     doc.paragraphs[8].text = "会計　　" + en0_4_1.get() + "　" + en0_4_2.get()
-    # チェックボックス出力
-    if cb0_1.get() == 1:
-        t = doc.paragraphs[12].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[12].text = t
-    if cb0_2.get() == 1:
-        t = doc.paragraphs[13].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[13].text = t
-    if cb0_3.get() == 1:
-        t = doc.paragraphs[14].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[14].text = t
-    if cb0_4.get() == 1:
-        t = doc.paragraphs[15].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[15].text = t
-    if cb0_5.get() == 1:
-        t = doc.paragraphs[16].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[16].text = t
-    if cb0_6.get() == 1:
-        t = doc.paragraphs[17].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[17].text = t
-    if cb0_7.get() == 1:
-        t = doc.paragraphs[18].text
-        t = t.replace("□", "☑")
-        doc.paragraphs[18].text = t
+    checkbox_paragraph_map = [
+        (cb0_1, 12),
+        (cb0_2, 13),
+        (cb0_3, 14),
+        (cb0_4, 15),
+        (cb0_5, 16),
+        (cb0_6, 17),
+        (cb0_7, 18)
+    ]
+    for cb, i in checkbox_paragraph_map:
+        if cb.get() == 1:
+            t = doc.paragraphs[i].text
+            t = t.replace("□", "☑")
+            doc.paragraphs[i].text = t
+    
     # 要件出力
     doc.paragraphs[20].text = te0_1.get("1.0", "end-1c")
 
@@ -132,7 +119,7 @@ def button_enter():
         doc.paragraphs[31].insert_paragraph_before("　　　　　　　　　使用理由　　　　　" + te4_1.get("1.0", "end-1c"))
     else:
         tk.messagebox.showerror("エラー", "エラーが発生しました。設定を変更してください。")
-        return 0
+        return
 
     # 文書の保存
     file_name = filedialog.asksaveasfilename(title="作成する文書の保存",
@@ -183,25 +170,8 @@ def button_change2():
     bu_change3.configure(fg_color="white", hover_color="whitesmoke", state="normal")
     bu_change4.configure(fg_color="white", hover_color="whitesmoke", state="normal")
 
-    fr_mode1.grid_forget()
-    fr_mode2.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
-    fr_mode3.grid_forget()
-    fr_mode4.grid_forget()
-
-    cb0_1.configure(state=tk.DISABLED)
-    # cb0_2.configure(state=tk.DISABLED, text_color_disabled="black")
-    cb0_2.configure(state=tk.DISABLED)
-    cb0_3.configure(state=tk.DISABLED)
-    cb0_4.configure(state=tk.DISABLED)
-    cb0_5.configure(state=tk.DISABLED)
-    cb0_6.configure(state=tk.DISABLED)
-
-    cb0_1.deselect()
-    cb0_2.select()
-    cb0_3.deselect()
-    cb0_4.deselect()
-    cb0_5.deselect()
-    cb0_6.deselect()
+    switch_mode_frame(fr_mode2)
+    set_checkboxes_for_transport()
 
 
 # ウィンドウの様式を変更する関数（交通費（電車・バス／複数経路）仕様）
@@ -215,24 +185,8 @@ def button_change3():
     bu_change3.configure(fg_color="black", hover_color="black", state="disabled")
     bu_change4.configure(fg_color="white", hover_color="whitesmoke", state="normal")
 
-    fr_mode1.grid_forget()
-    fr_mode2.grid_forget()
-    fr_mode3.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
-    fr_mode4.grid_forget()
-
-    cb0_1.configure(state=tk.DISABLED)
-    cb0_2.configure(state=tk.DISABLED)
-    cb0_3.configure(state=tk.DISABLED)
-    cb0_4.configure(state=tk.DISABLED)
-    cb0_5.configure(state=tk.DISABLED)
-    cb0_6.configure(state=tk.DISABLED)
-
-    cb0_1.deselect()
-    cb0_2.select()
-    cb0_3.deselect()
-    cb0_4.deselect()
-    cb0_5.deselect()
-    cb0_6.deselect()
+    switch_mode_frame(fr_mode3)
+    set_checkboxes_for_transport()
 
 
 # ウィンドウの様式を変更する関数（交通費（レンタカー）仕様）
@@ -246,43 +200,33 @@ def button_change4():
     bu_change3.configure(fg_color="white", hover_color="whitesmoke", state="normal")
     bu_change4.configure(fg_color="black", hover_color="black", state="disabled")
 
-    fr_mode1.grid_forget()
-    fr_mode2.grid_forget()
-    fr_mode3.grid_forget()
-    fr_mode4.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
+    switch_mode_frame(fr_mode4)
+    set_checkboxes_for_transport()
 
-    cb0_1.configure(state=tk.DISABLED)
-    # cb0_2.configure(state=tk.DISABLED, text_color_disabled="black")
-    cb0_2.configure(state=tk.DISABLED)
-    cb0_3.configure(state=tk.DISABLED)
-    cb0_4.configure(state=tk.DISABLED)
-    cb0_5.configure(state=tk.DISABLED)
-    cb0_6.configure(state=tk.DISABLED)
 
-    cb0_1.deselect()
+# モードフレームを切り替えるヘルパー関数
+def switch_mode_frame(active_frame):
+    for fr in (fr_mode1, fr_mode2, fr_mode3, fr_mode4):
+        fr.grid_forget()
+    active_frame.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
+
+
+# 交通費モード時のチェックボックス一括設定ヘルパー関数
+def set_checkboxes_for_transport():
+    for cb in (cb0_1, cb0_2, cb0_3, cb0_4, cb0_5, cb0_6):
+        cb.configure(state=tk.DISABLED)
+        cb.deselect()
     cb0_2.select()
-    cb0_3.deselect()
-    cb0_4.deselect()
-    cb0_5.deselect()
-    cb0_6.deselect()
 
 
 # コンボボックスを選択すると起動する関数
 def combo_select(e):
     global flag_use
-    co1_int = co2_int = co3_int = co4_int = 0
-    for i in range(0, len(va1)):
-        if co1_1.get() == va1[i]:
-            co1_int = i
-        if co1_2.get() == va1[i]:
-            co2_int = i
-        if co1_3.get() == va1[i]:
-            co3_int = i
-        if co1_4.get() == va1[i]:
-            co4_int = i
-    if co1_int == co2_int == co3_int == co4_int == 0:
+    indices = [va1.index(cb.get()) if cb.get() in va1 else -1
+               for cb in (co1_1, co1_2, co1_3, co1_4)]
+    if all(i == 0 for i in indices):
         flag_use = 1
-    elif co1_int == co2_int == co3_int == co4_int == 1:
+    elif all(i == 1 for i in indices):
         flag_use = 2
     else:
         flag_use = 0
@@ -339,13 +283,13 @@ fr_button1.grid(column=0, row=15, columnspan=3, padx=20, pady=20)
 fr_mode1 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
 fr_mode1.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
 
-# 入力関連ウィジェット（交通費（電車・バス）仕様部分）を配置するフレーム
+# 入力関連ウィジェット（交通費（複数経路）仕様部分）を配置するフレーム
 fr_mode2 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
 
-# 入力関連ウィジェット（交通費（レンタカー）仕様部分）を配置するフレーム
+# 入力関連ウィジェット（交通費（単一経路）仕様部分）を配置するフレーム
 fr_mode3 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
 
-# 入力関連ウィジェット（交通費（レンタカー）仕様部分）を配置するフレーム
+# 入力関連ウィジェット（レンタカー仕様部分）を配置するフレーム
 fr_mode4 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
 
 # 入力ボタンと終了ボタンを配置するフレーム

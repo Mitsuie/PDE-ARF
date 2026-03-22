@@ -264,35 +264,26 @@ class App(ctk.CTk):
 
         # タイトル
         la_title = ctk.CTkLabel(scrollable_frame, text="会計要望書生成", font=("FOT-筑紫B丸ゴシック Std R", 60))
-        la_title.grid(column=0, row=0, columnspan=3, padx=20, pady=10)
 
-        # 入力関連ウィジェット（共通部分）を配置するフレーム
+        # 入力関連ウィジェットを配置するフレーム
         fr_body = ctk.CTkFrame(scrollable_frame, fg_color=main_fg_color, width=600, corner_radius=10)
-        fr_body.grid(column=0, row=1, columnspan=3, padx=20, pady=10)
+
+        # モード別入力関連ウィジェットを配置するフレーム
+        ## 汎用仕様部分
+        self.fr_mode1 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
+        ## 交通費（複数経路）仕様部分
+        self.fr_mode2 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
+        ## 交通費（単一経路）仕様部分
+        self.fr_mode3 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
+        ## レンタカー仕様部分
+        self.fr_mode4 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
 
         # モード切替ボタンを配置するフレーム
         la_button1 = ctk.CTkLabel(fr_body, text="モードを選択してください（黒背景が選択中モード）。", font=font_body)
-        la_button1.grid(column=0, row=14, sticky="w", padx=20, pady=10)
-
-        fr_button1 = ctk.CTkFrame(fr_body, fg_color=main_fg_color, width=800, height=50)
-        fr_button1.grid(column=0, row=15, columnspan=3, padx=20, pady=20)
-
-        # 入力関連ウィジェット（汎用仕様部分）を配置するフレーム
-        self.fr_mode1 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
-        self.fr_mode1.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
-
-        # 入力関連ウィジェット（交通費（複数経路）仕様部分）を配置するフレーム
-        self.fr_mode2 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
-
-        # 入力関連ウィジェット（交通費（単一経路）仕様部分）を配置するフレーム
-        self.fr_mode3 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
-
-        # 入力関連ウィジェット（レンタカー仕様部分）を配置するフレーム
-        self.fr_mode4 = ctk.CTkFrame(fr_body, fg_color=main_fg_color)
+        fr_button1 = ctk.CTkFrame(fr_body, fg_color=main_fg_color, width=600, height=50)
 
         # 入力ボタンと終了ボタンを配置するフレーム
         fr_button2 = ctk.CTkFrame(scrollable_frame, fg_color=main_bg_color, width=800, height=50)
-        fr_button2.grid(column=0, row=50, columnspan=3, padx=20, pady=10)
 
         # fr_bodyに配置する入力関連ウィジェットの作成
         la0_1 = ctk.CTkLabel(fr_body, text="要望書を提出する日付を入力してください。", font=font_body)
@@ -305,6 +296,7 @@ class App(ctk.CTk):
         la0_4 = ctk.CTkLabel(fr_body, text="会計担当者名を入力してください。", font=font_body)
         self.en0_4_1 = ctk.CTkEntry(fr_body, width=100, placeholder_text="担当者の名字")
         self.en0_4_2 = ctk.CTkEntry(fr_body, width=100, placeholder_text="担当者の名前")
+
         la0_5 = ctk.CTkLabel(fr_body, text="要望書の用件を以下から選んでください。", font=font_body)
         self.cb0_1 = ctk.CTkCheckBox(fr_body, text="遠征等で資材などの運搬を依頼する時", font=font_body)
         self.cb0_2 = ctk.CTkCheckBox(fr_body, text="交通機関を用いた移動費として使用する時（電車・バス等）", font=font_body, state=tk.DISABLED)
@@ -314,7 +306,7 @@ class App(ctk.CTk):
         self.cb0_6 = ctk.CTkCheckBox(fr_body, text="自治会費で購入してよいか迷ったとき", font=font_body)
         self.cb0_7 = ctk.CTkCheckBox(fr_body, text="その他", font=font_body)
         la0_6 = ctk.CTkLabel(fr_body, text="要望内容を書き換えてください（例：○○代⇒カメラ代）。", font=font_body)
-        self.te0_1 = ctk.CTkTextbox(fr_body, width=650, height=75, font=font_body)
+        self.te0_1 = ctk.CTkTextbox(fr_body, width=700, height=75, font=font_body)
         self.te0_1.insert("1.0", "○○代を予算内から使用することを要望いたします。")
 
         # fr_mode1に配置する入力関連ウィジェットの作成
@@ -381,7 +373,13 @@ class App(ctk.CTk):
         la4_7 = ctk.CTkLabel(self.fr_mode4, text="使用理由を入力してください。", font=font_body)
         self.te4_1 = ctk.CTkTextbox(self.fr_mode4, width=600, height=60, font=font_body)
 
-        # fr_bodyに配置する入力関連ウィジェットの配置
+        # タイトルの配置
+        la_title.grid(column=0, row=0, columnspan=3, padx=20, pady=10)
+
+        # 入力関連ウィジェット（共通部分）を配置するフレームの配置
+        fr_body.grid(column=0, row=1, columnspan=3, padx=20, pady=10)
+
+        # fr_bodyに配置する入力関連ウィジェットの配置（~ 会計担当者名）
         la0_1.grid(column=0, row=0, sticky="w", padx=20, pady=10)
         self.en0_1.grid(column=1, row=0, columnspan=2, padx=20, pady=10)
         la0_2.grid(column=0, row=1, sticky="w", padx=20, pady=10)
@@ -392,16 +390,26 @@ class App(ctk.CTk):
         la0_4.grid(column=0, row=3, sticky="w", padx=20, pady=10)
         self.en0_4_1.grid(column=1, row=3, padx=0, pady=10)
         self.en0_4_2.grid(column=2, row=3, padx=20, pady=10)
-        la0_5.grid(column=0, row=4, sticky="w", columnspan=3, padx=20, pady=10)
-        self.cb0_1.grid(column=0, row=5, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_2.grid(column=0, row=6, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_3.grid(column=0, row=7, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_4.grid(column=0, row=8, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_5.grid(column=0, row=9, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_6.grid(column=0, row=10, sticky="w", columnspan=3, padx=50, pady=5)
-        self.cb0_7.grid(column=0, row=11, sticky="w", columnspan=3, padx=50, pady=5)
-        la0_6.grid(column=0, row=12, sticky="w", padx=20, pady=10)
-        self.te0_1.grid(column=0, row=13, sticky="w", columnspan=3, padx=20, pady=10)
+
+        # モード切替ボタンを配置するフレームの配置
+        la_button1.grid(column=0, row=4, sticky="w", padx=20, pady=10)
+        fr_button1.grid(column=0, row=5, columnspan=3, padx=20, pady=20)
+
+        # fr_bodyに配置する入力関連ウィジェットの配置（要望用件 ~ ）        
+        la0_5.grid(column=0, row=6, sticky="w", columnspan=3, padx=20, pady=10)
+        self.cb0_1.grid(column=0, row=7, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_2.grid(column=0, row=8, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_3.grid(column=0, row=9, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_4.grid(column=0, row=10, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_5.grid(column=0, row=11, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_6.grid(column=0, row=12, sticky="w", columnspan=3, padx=50, pady=5)
+        self.cb0_7.grid(column=0, row=13, sticky="w", columnspan=3, padx=50, pady=5)
+
+        la0_6.grid(column=0, row=14, sticky="w", padx=20, pady=10)
+        self.te0_1.grid(column=0, row=15, sticky="w", columnspan=3, padx=20, pady=10)
+
+        # 入力関連ウィジェット（汎用仕様部分）を配置するフレームの初期配置
+        self.fr_mode1.grid(column=0, row=16, columnspan=3, padx=20, pady=10)
 
         # fr_mode1に配置する入力関連ウィジェットの配置
         self.co1_1.grid(column=0, row=0, sticky="w", pady=10)
@@ -460,6 +468,9 @@ class App(ctk.CTk):
         self.en4_6.grid(column=0, row=6, sticky="e", columnspan=2, pady=5)
         la4_7.grid(column=0, row=7, sticky="w", pady=5)
         self.te4_1.grid(column=0, row=8, sticky="w", columnspan=2, pady=5)
+
+        # 入力ボタンと終了ボタンを配置するフレームの配置
+        fr_button2.grid(column=0, row=50, columnspan=3, padx=20, pady=10)
 
         # 各種ボタンの作成
         self.bu_change1 = ctk.CTkButton(fr_button1, text="汎用",
